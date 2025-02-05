@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node properties: type, tag and contentst</title>
+</head>
+
+<body>
+    hiii
+    <h1>Node properties: type, tag and contents</h1>
+    <div>Hello, world!</div>
+
+
+    <script>
+        let elem = document.body;
+
+        console.log(elem.nodeType); // 1 => element
+
+        // and its first child is...
+        console.log(elem.firstChild.nodeType); // 3 => text
+
+        // for the document object, the type is 9
+        console.log(document.nodeType); // 9
+
+        let div = document.querySelector('div');
+
+        // replace div.outerHTML with <p>...</p>
+        div.outerHTML = '<p>A new element</p>'; // (*)
+        // div.innerHTML = 'A element'; // (*)
+
+        // Wow! 'div' is still the same!
+        console.log(div.outerHTML); // <div>Hello, world!</div> (**)
+        console.log(div.innerHTML); // <div>Hello, world!</div> (**)
+
+        let text = document.body.firstChild;
+        console.log(text); // hiii
+
+        let comment = text.nextSibling;
+        console.log(comment); // h1
+    </script>
+</body>
+
+</html>

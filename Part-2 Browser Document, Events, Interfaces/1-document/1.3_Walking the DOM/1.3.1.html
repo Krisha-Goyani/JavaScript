@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walking the DOM</title>
+</head>
+
+<body>
+    <h1>Walking the DOM</h1>
+    <div>Begin</div>
+    <ul>
+        <li>Information</li>
+    </ul>
+    <div>End</div>
+
+    <table id="table">
+        <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+        <tr>
+            <td>three</td>
+            <td>four</td>
+        </tr>
+    </table>
+
+    <script>
+        for (let elem of document.body.children) {
+            console.log(elem); // DIV, UL, DIV, SCRIPT
+        }
+
+        let td = table.rows[0].cells[1];
+        td.style.backgroundColor = "green"; // highlight it
+    </script>
+</body>
+
+</html>
