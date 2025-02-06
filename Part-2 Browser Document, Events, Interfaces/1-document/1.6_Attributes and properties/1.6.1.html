@@ -6,26 +6,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attributes and properties</title>
 </head>
+<style>
+    /* styles rely on the custom attribute "order-state" */
+    .order[order-state="new"] {
+        color: green;
+    }
+
+    .order[data-order-state="pending"] {
+        color: blue;
+    }
+
+    .order[order-state="canceled"] {
+        color: red;
+    }
+</style>
 
 <body>
-    <input>
-    <script>
-        let input = document.querySelector('input');
+    <!--------------------1----------------------->
+    <div id="elem" about="Elephant"></div>
 
+    <!--------------------2----------------------->
+    <input>
+
+    <!-- -----3------- -->
+    <a id="a" href="#hello">link</a>
+
+    <!-----------4--------->
+    <div class="order" order-state="new">
+        A new order.
+    </div>
+
+    <div id="order" class="order" data-order-state="pending">
+        A pending order.
+    </div>
+
+    <div class="order" order-state="canceled">
+        A canceled order.
+    </div>
+
+
+    <script>
+        // ------------1-----------------------------
+        console.log(elem.getAttribute('About')); // (1) 'Elephant', reading
+        elem.setAttribute('Test', 123); // (2), writing
+        console.log(elem.outerHTML); // (3), see if the attribute is in HTML (yes)
+        for (let attr of elem.attributes) { // (4) list all
+            console.log(`${attr.name} = ${attr.value}`);
+        }
+
+        // ------------------2-----------------
+        let input = document.querySelector('input');
         // attribute => property
         input.setAttribute('id', 'ids');
         console.log(input.id); // id (updated)
-
         // property => attribute
         input.id = 'newId';
         console.log(input.getAttribute('id')); // newId (updated)
-
         input.setAttribute('value', 'textss');
         console.log(input.value); // text
-
         // NOT property => attribute
         input.value = 'newValue';
         console.log(input.getAttribute('value'));
+
+        // -----3-------------
+        console.log(a.getAttribute('href')); // #hello
+        // property
+        console.log(a.href); // full URL in the form http://site.com/page#hello
+
+        console.log(order.dataset.orderState);
+        order.dataset.orderState = "canceled"; 
     </script>
 </body>
 

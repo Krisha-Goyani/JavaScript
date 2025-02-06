@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styles and classes</title>
+</head>
+<body class="main page">
+    <script>
+      console.log(document.body.className); // main page
+      
+      document.body.classList.add('article');
+      console.log(document.body.classList); // main page
+
+      for(let name of document.body.classList){
+        console.log(name);        
+      }
+
+      document.body.style.background = 'pink';
+      setTimeout(() => {
+        document.body.style.removeProperty('background')
+      }, 3000);
+    </script>
+  </body>
+</html>

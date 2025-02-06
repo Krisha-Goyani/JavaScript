@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser events</title>
+</head>
+
+<body>
+    <!------------------1-------->
+    <input type="button" onclick="countRabbits()" value="Count rabbits!">
+    <!------------------2-------->
+    <input type="button" id="btn" value="click me!!">
+    <!------------------3--------------->
+    <input id="elem" type="button" value="clicksss">
+    <button onclick="console.log(this.innerHTML)">Click me</button>
+    
+    <!-- Object handlers: handleEvent -->
+    <button id="btn1">button1</button>
+    <button id="btn2">button2</button>
+
+    <!-- hide text -->
+    <input type="button" id="hider" value="click to hide text">
+    <div id="text">Hello</div>
+
+    <input type="button" onclick="this.hidden=true" value="click to hide button">
+    <script>
+        function countRabbits() {
+            for (let i = 1; i <= 3; i++) {
+                console.log("Rabbit number " + i);
+            }
+        }
+        // ------------------2-----------------
+        btn.onclick = function () {
+            console.log('Thanksss!!!!');
+        }
+        // ------------------3-----------------
+
+        function handler1() {
+            console.log('thankss');
+        }
+        function handler2() {
+            console.log('Visit again');
+        }
+        elem.onclick = () => console.log('Heyyy');
+        elem.addEventListener("click", handler1)
+        elem.addEventListener("click", handler2)
+
+        // Event object
+        elem.onclick = function (event) {
+            console.log(event.type + " at " + event.currentTarget);
+            console.log("Coordinates: " + event.clientX + ":" + event.clientY);
+        }
+
+        // Object handlers: handleEvent
+        let obj = {
+            handleEvent(event) {
+                console.log("button 1 " + event.type + " at " + event.currentTarget);
+            }
+        }
+        btn1.addEventListener('click', obj)
+
+        class Menu {
+            handleEvent(event) {
+                switch (event.type) {
+                    case 'mousedown':
+                        btn2.innerHTML = "Mouse button pressed";
+                        break;
+                    case 'mouseup':
+                        btn2.innerHTML += "...and released.";
+                        break;
+                }
+            }
+        }
+
+        let menu = new Menu();
+
+        btn2.addEventListener('mousedown', menu);
+        btn2.addEventListener('mouseup', menu);
+
+        // hide text
+        document.getElementById('hider').onclick = function () {
+            document.getElementById('text').hidden = true;
+        }
+    </script>
+
+</body>
+
+</html>
