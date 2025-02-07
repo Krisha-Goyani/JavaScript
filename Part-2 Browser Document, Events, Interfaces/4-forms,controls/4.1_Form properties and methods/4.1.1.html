@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form properties</title>
+</head>
+
+<body>
+    <form name="my">
+        <input name="one" value="1">
+        <input name="two" value="2">
+        <input name="login" type="text">
+    </form>
+
+    <select id="select" multiple>
+        <option value="blues" selected>Blues</option>
+        <option value="rock" selected>Rock</option>
+        <option value="classic">Classic</option>
+    </select>
+
+
+    <script>
+        let form = document.forms.my;
+        console.log(form);
+
+        let elem = form.elements.one;
+        console.log(elem.value);
+
+        // console.log(form.elements.login);
+        // alert(form.elements.login);
+        // console.log(form.elements.login);
+        form.login.name = "username";
+        // alert(form.elements.username);
+
+        let selected = Array.from(select.options)
+            .filter(options => options.selected)
+            .map(option => option.value);
+
+        console.log(selected);
+
+        let option = new Option("text", "value", true, true);
+        console.log(option)
+    </script>
+</body>
+
+</html>

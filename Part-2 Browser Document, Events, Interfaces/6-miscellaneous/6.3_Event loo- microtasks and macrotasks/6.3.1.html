@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event loop: microtasks and macrotasks</title>
+</head>
+
+<body>
+    <script>
+        let i = 0;
+
+        let start = Date.now();
+
+        function count() {
+
+            // do a heavy job
+            for (let j = 0; j < 1e9; j++) {
+                i++;
+            }
+
+            alert("Done in " + (Date.now() - start) + 'ms');
+        }
+        count();
+
+        // What will be the output of this code?
+        console.log(1);
+
+        setTimeout(() => console.log(2));
+
+        Promise.resolve().then(() => console.log(3));
+
+        Promise.resolve().then(() => setTimeout(() => console.log(4)));
+
+        Promise.resolve().then(() => console.log(5));
+
+        setTimeout(() => console.log(6));
+
+        console.log(7);
+    </script>
+</body>
+
+</html>

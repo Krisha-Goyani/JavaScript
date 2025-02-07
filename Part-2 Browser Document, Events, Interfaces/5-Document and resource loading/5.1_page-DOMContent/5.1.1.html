@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page: DOMContentLoaded, load, beforeunload, unload</title>
+</head>
+
+<body>
+    <img id="img" src="https://en.js.cx/clipart/train.gif?speed=1&cache=0">
+
+    <script>
+        function ready() {
+            alert('DOM is ready');
+
+            // image is not yet loaded (unless it was cached), so the size is 0x0
+            alert(`Image size: ${img.offsetWidth}x${img.offsetHeight}`);
+        }
+
+        document.addEventListener("DOMContentLoaded", ready);
+
+        window.onload = function () { // can also use window.addEventListener('load', (event) => {
+            alert('Page loaded');
+
+            // image is loaded at this time
+            alert(`Image size: ${img.offsetWidth}x${img.offsetHeight}`);
+        };
+    </script>
+</body>
+
+</html>

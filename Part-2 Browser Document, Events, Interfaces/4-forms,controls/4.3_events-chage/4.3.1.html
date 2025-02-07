@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events: change, input, cut, copy, paste</title>
+</head>
+
+<body>
+    <!-- onChange -->
+    <input type="text" onchange="console.log(this.value)">
+    <input type="button" value="Button">
+
+    <select onchange="console.log(this.value)">
+        <option value="">Select something</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+    </select>
+    <!-- oninput -->
+    <input type="text" id="input">
+    onInput :
+    <span id="result"></span>
+    <br>
+    <br>
+    <!-- cut copy paste-->
+    <input type="text" id="ip">
+
+    <script>
+        // oninput
+        input.oninput = function () {
+            result.innerHTML = input.value;
+        };
+
+        // cut copy paste
+        ip.onpaste = function (event) {
+            console.log("paste:" + event.clipboardData.getData('text/plain'));
+            event.preventDefault();
+        }
+
+        ip.oncut = ip.oncopy = function (event) {
+            console.log(event.type + '-' + document.getSelection());
+            event.preventDefault();
+        } 
+    </script>
+</body>
+
+</html>

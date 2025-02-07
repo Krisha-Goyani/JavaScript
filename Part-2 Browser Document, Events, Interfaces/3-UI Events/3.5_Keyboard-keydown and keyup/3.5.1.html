@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard: keydown and keyup</title>
+
+    <style>
+        #kinput {
+            font-size: 150%;
+            box-sizing: border-box;
+            width: 95%;
+        }
+
+        #area {
+            width: 95%;
+            box-sizing: border-box;
+            height: 250px;
+            border: 1px solid black;
+            display: block;
+        }
+
+        form label {
+            display: inline;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form" onsubmit="return false">
+
+        Prevent default for:
+        <label>
+            <input type="checkbox" name="keydownStops" value="1">keydown
+        </label>&nbsp;&nbsp;&nbsp;
+        <label>
+            <input type="checkbox" name="keyupStops" value="1">keyup
+        </label>
+
+        <p>
+            Ignore:
+            <label>
+                <input type="checkbox" name="keydownIgnores" value="1">keydown
+            </label> &nbsp;&nbsp;&nbsp;
+            <label>
+                <input type="checkbox" name="keyupIgnores" value="1">keyup
+            </label>
+        </p>
+
+        <p>Focus on the input field and press a key.</p>
+
+        <input type="text" placeholder="Press a key here" id="kinput">
+
+        <textarea id="area" readonly></textarea>
+
+        <input type="button" value="Clear" onclick="area.value = ''" />
+    </form>
+
+    <script src="3.5.1.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource loading: onload and onerror</title>
+</head>
+
+<body>
+    <script>
+        let script = document.createElement('script');
+
+        // can load any script, from any domain
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.3.0/lodash.js"
+        document.head.append(script);
+
+        script.onload = function () {
+            // the script creates a variable "_"
+            console.log(_.VERSION); // shows library version
+        };
+
+        //script.onerror
+        let script1 = document.createElement('script');
+        script1.src = "https://example.com/404.js"; // no such script
+        document.head.append(script1);
+
+        script1.onerror = function () {
+            console.log("Error loading " + this.src); // Error loading https://example.com/404.js
+        };
+    </script>
+</body>
+
+</html>

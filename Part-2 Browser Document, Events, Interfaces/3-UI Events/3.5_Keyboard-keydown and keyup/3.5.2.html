@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extended hotkeys</title>
+</head>
+
+<body>
+    <h>TASK : Extended hotkeys</h>
+    <p>Press "Q" and "W" together (can be in any language).</p>
+
+    <script>
+        function runOnKeys(funcs, ...codes) {
+            let pressed = new Set();
+
+            document.addEventListener('keydown', function (event) {
+                pressed.add(event.code);
+
+                for (let code of codes) {
+                    if (!pressed.has(code)) {
+                        return;
+                    }
+                }
+
+                pressed.clear();
+                funcs();
+            });
+
+            document.addEventListener('keyup', function(event){
+                pressed.delete(event.code);
+            });
+        }
+
+        runOnKeys(() => alert('Heyyyy') , "KeyQ", "KeyW");
+    </script>
+</body>
+
+</html>
