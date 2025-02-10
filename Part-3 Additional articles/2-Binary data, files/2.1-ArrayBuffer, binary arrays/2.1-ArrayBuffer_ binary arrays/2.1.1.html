@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let buffer = new ArrayBuffer(12);
+        // let view = new Uint32Array(buffer);
+
+        // console.log("4 bytes per integer : " + Uint32Array.BYTES_PER_ELEMENT);
+        // console.log(view.length);
+        // console.log(view.byteLength);
+
+        // view[0] = 1234;
+        // view[2] = 3;
+        // for (let num of view) {
+        //     console.log(num);
+        // }
+
+        let buffer1 = new Uint8Array([255, 255, 255, 255]).buffer;
+        let dataView = new DataView(buffer1);
+
+        // get 8-bit number at offset 0
+        console.log(dataView.getUint8(3)); // 255
+
+        // now get 16-bit number at offset 0, it consists of 2 bytes, together interpreted as 65535
+        console.log(dataView.getUint16(2)); // 65535 (biggest 16-bit unsigned int)
+
+        // get 32-bit number at offset 0
+        console.log(dataView.getUint32(0)); // 4294967295 (biggest 32-bit unsigned int)
+
+        dataView.setUint32(0, 0); // set 4-byte number to zero, thus setting all bytes to 0
+
+    </script>
+</body>
+
+</html>

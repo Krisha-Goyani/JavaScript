@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>blob</title>
+</head>
+
+<body>
+    <img src="./img1.jpg">
+
+    <!-- <a download="hello.text" href="#" id="link"> Download</a> -->
+    <script>
+        //    let blob = new Blob(["hello, world!!"], {type: 'text/plain'});
+        //    link.href = URL.createObjectURL(blob); 
+
+        //    let link = document.createElement('a');
+        //    link.download = 'hello.txt';
+
+        //    let blob1 = new Blob(["without html"], {type: 'text/plain'});
+        //    link.href = URL.createObjectURL(blob1);
+        //    link.click();
+        //    URL.revokeObjectURL(link.href);
+
+        //    Blob to base64
+        // let link = document.createElement('a');
+        // link.download = 'hello.txt';
+
+        // //    let blob2 = new Blob(["Blob to base64"], {type: 'text/plain'});
+
+        // let reader = new FileReader();
+        // reader.readAsDataURL(blob2);
+
+        // reader.onload = function () {
+        //     link.href = reader.result;
+        //     link.click();
+
+            let img = document.querySelector('img');
+
+            let canvas = document.createElement('canvas');
+            canvas.width = img.clientWidth;
+            canvas.height = img.clientHeight;
+
+            let context = canvas.getContext('2d');
+
+            // copy image to it (this method allows to cut image)
+            context.drawImage(img, 0, 0);
+            // we can context.rotate(), and do many other things on canvas
+
+            // toBlob is async operation, callback is called when done
+            canvas.toBlob(function (blob) {
+                // blob ready, download it
+                let link = document.createElement('a');
+                link.download = 'example.png';
+
+                link.href = URL.createObjectURL(blob);
+                link.click();
+
+                // delete the internal blob reference, to let the browser clear memory from it
+                URL.revokeObjectURL(link.href);
+            }, 'image/png');
+
+    </script>
+</body>
+
+</html>

