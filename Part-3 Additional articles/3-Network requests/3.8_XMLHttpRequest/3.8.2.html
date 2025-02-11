@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" onchange="upload(this.files[0])">
+
+    <script>
+        function upload(file){
+            let xhr = new XMLHttpRequest();
+
+            xhr.upload.onprogress = function(event){
+                console.log(`Uploaded ${event.loaded} of ${event.total}` );};
+                
+                xhr.onloadend = function(){
+                    if(xhr.status == 200){
+                        console.log('success');                        
+                    } else{
+                        console.log("error" + this.status);
+                    }         
+                    };
+
+                    xhr.open('POST', "/article/xmlhttprequest/post/upload");
+                    xhr.send(file);
+                }
+    </script>
+</body>
+</html>

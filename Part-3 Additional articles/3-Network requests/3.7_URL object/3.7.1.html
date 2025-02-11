@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let url1 = new URL('https://javascript.info/profile/admin');
+        let url2 = new URL('/profile/amin', 'https://javascript.inf');
+
+        // alert(url1); // https://javascript.info/profile/admin
+        // alert(url2); // https://javascript.info/profile/admin
+
+        let url = new URL("https://javascript.info/profile/admin");
+        let newUrl = new URL('tester/hi', url);
+        console.log(url.protocol);
+        console.log(url.host);
+        console.log(url.pathname);
+        console.log(url.origin);
+
+        // alert(newUrl);
+
+        let url3 = new URL('https://google.com/search/hii');
+
+        // url3.searchParams.set('q', 'test me!'); // added parameter with a space and !
+
+        // // alert(url3); // https://google.com/search?q=test+me%21
+
+        // url3.searchParams.set('tbs', 'qdr:y'); // added parameter with a colon :
+
+        // // parameters are automatically encoded
+        // // alert(url3); // https://google.com/search?q=test+me%21&tbs=qdr%3Ay
+
+        // // iterate over search parameters (decoded)
+        // for (let [name, value] of url3.searchParams) {
+        //     // alert(`${name}=${value}`); // q=test me!, then tbs=qdr:y
+        // }
+
+        alert(encodeURI(`https://google.com/search/hii${encodeURI('rock&roll')}`));
+        alert(encodeURI(`https://google.com/search/hii${encodeURIComponent('rock&roll')}`));
+        alert(encodeURIComponent(url3));
+    
+    </script>
+</body>
+
+</html>

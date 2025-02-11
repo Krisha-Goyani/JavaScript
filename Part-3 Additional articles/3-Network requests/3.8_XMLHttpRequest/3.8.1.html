@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let xhr = new XMLHttpRequest();
+
+        xhr.open('GET', '/article/xmlhttprequest/example/json');
+
+        xhr.responseType = 'json';
+
+        xhr.send();
+
+        // the response is {"message": "Hello, world!"}
+        xhr.onload = function () {
+            let responseObj = xhr.response;
+            alert(responseObj.message); // Hello, world!
+        };
+    </script>
+</body>
+
+</html>
